@@ -17,44 +17,43 @@ public class Program {
 
         Students[] rooms = new Students[10];
         Students students;
-        int vacancy = 0;
-        for (Students x : rooms) {
-            if (x == null)
-                vacancy++;
-        }
-        if (vacancy > 0)
+        int vacancy = 10;
+
+        while (vacancy > 0) {
             System.out.printf("There are currently %d rooms available.%n", vacancy);
-        else
-            System.out.println("There are no rooms available.");
-        System.out.print("How many students will rent a room? ");
-        int rents = sc.nextInt();
-        int room;
-        for (int i = 0; i < rents; i++) {
-            sc.nextLine();
-            System.out.printf("Rent #%d:%n", i + 1);
+            System.out.print("How many students will rent a room? ");
+            int rents = sc.nextInt();
+            int room;
+            for (int i = 0; i < rents; i++) {
+                sc.nextLine();
+                System.out.printf("Rent #%d:%n", i + 1);
 
-            System.out.print("Name: ");
-            String name = sc.nextLine();
+                System.out.print("Name: ");
+                String name = sc.nextLine();
 
-            System.out.print("Email: ");
-            String email = sc.nextLine();
+                System.out.print("Email: ");
+                String email = sc.nextLine();
 
-            do {
-                System.out.print("Room(0-9): ");
-                room = sc.nextInt();
-                if (room < 0 || room > 9) {
-                    System.out.println("Invalid room. Please, choose from 0 to 9.");
-                } else if (rooms[room] != null) {
-                    System.out.printf("Room %d is occupied. Please, choose another one.", room);
+                do {
+                    System.out.print("Room(0-9): ");
+                    room = sc.nextInt();
+                    if (room < 0 || room > 9) {
+                        System.out.println("Invalid room. Please, choose from 0 to 9.");
+                    } else if (rooms[room] != null) {
+                        System.out.printf("Room %d is occupied. Please, choose another one.", room);
+                    }
+                } while (room < 0 || room > 9 || rooms[room] != null);
+
+                students = new Students(name, email, room);
+                rooms[room] = students;
+                vacancy--;
+
+                
+            }
+            for (Students obj : rooms) {
+                if (obj != null) {
+                    System.out.println(obj);
                 }
-            } while (room < 0 || room > 9 || rooms[room] != null);
-
-            students = new Students(name, email, room);
-            rooms[room] = students;
-        }
-        for (Students obj : rooms) {
-            if (obj != null) {
-                System.out.println(obj);
             }
         }
         sc.close();
