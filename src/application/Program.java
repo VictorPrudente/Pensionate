@@ -15,9 +15,17 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-
         Students[] rooms = new Students[10];
         Students students;
+        int vacancy = 0;
+        for (Students x : rooms) {
+            if (x == null)
+                vacancy++;
+        }
+        if (vacancy > 0)
+            System.out.printf("There are currently %d rooms available.%n", vacancy);
+        else
+            System.out.println("There are no rooms available.");
         System.out.print("How many students will rent a room? ");
         int rents = sc.nextInt();
         int room;
@@ -34,7 +42,7 @@ public class Program {
             do {
                 System.out.print("Room(0-9): ");
                 room = sc.nextInt();
-                if (room < 0 || room > 9){
+                if (room < 0 || room > 9) {
                     System.out.println("Invalid room. Please, choose from 0 to 9.");
                 } else if (rooms[room] != null) {
                     System.out.printf("Room %d is occupied. Please, choose another one.", room);
@@ -44,7 +52,7 @@ public class Program {
             students = new Students(name, email, room);
             rooms[room] = students;
         }
-            for (Students obj : rooms) {
+        for (Students obj : rooms) {
             if (obj != null) {
                 System.out.println(obj);
             }
