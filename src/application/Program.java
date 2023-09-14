@@ -1,3 +1,8 @@
+/* a simple program made to exercise "vectors", "for" and "OOP".
+* The pensionate has 10 rooms. The student makes his own reservation and the
+* program must inform him weather the room is occupied or not, and if its a valid input
+* After that, it prints a description of the occupied rooms and their respective occupants.*/
+
 package application;
 
 import entities.Students;
